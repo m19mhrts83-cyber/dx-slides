@@ -318,6 +318,62 @@
             border-color: #4caf50;
             background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
         }
+
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            html,
+            body {
+                width: 100%;
+                height: auto;
+                background: #ffffff;
+                overflow: visible;
+            }
+
+            .slides-container {
+                width: 100%;
+                height: auto;
+            }
+
+            .slide,
+            .slide.active {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                min-height: 100vh;
+                page-break-after: always;
+                break-after: page;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                animation: none;
+                overflow: hidden;
+            }
+
+            .slide:last-child {
+                page-break-after: auto;
+                break-after: auto;
+            }
+
+            .title-slide::before {
+                animation: none;
+            }
+
+            .nav,
+            .page-number {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
